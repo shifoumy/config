@@ -1,0 +1,6 @@
+[submodule "awesome"]
+	path = awesome
+	url = ./awesome
+[submodule "rofi.adrien"]
+	path = rofi.adrien
+	url = ./rofi.adrien
