@@ -6,3 +6,4 @@
 awesome/**
 rofi.adrien/**
 nvim/plugin/**
+!rofi/**
