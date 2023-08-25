@@ -52,7 +52,7 @@ require('nvim-treesitter.configs').setup {
     },
   },
     -- ignored for some reasons.... sql, gitignore
-  ensure_installed = {"bash", "markdown", "regex", "markdown_inline", "cmake", "python", "lua", "vim", "help", "git_rebase", "diff", "gitcommit", "htmldjango", "json", "make", "javascript", "ini", "dockerfile", "sql" },
+  ensure_installed = {"bash", "markdown", "regex", "markdown_inline", "cmake", "python", "lua", "vim", "git_rebase", "diff", "gitcommit", "htmldjango", "json", "make", "javascript", "ini", "dockerfile", "sql" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   -- Automatically install missing parsers when entering buffer

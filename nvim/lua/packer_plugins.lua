@@ -52,8 +52,8 @@ require('packer').startup(function(use)
           'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    config = function() require'nvim-tree'.setup {} end
+    }
+    --config = function() require'nvim-tree'.setup {} end
   }
 -- Add git related info in the signs columns and popups
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -71,26 +71,7 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use "williamboman/mason.nvim"
-  -- use {
-  --   "williamboman/nvim-lsp-installer",
-  --   {
-  --       "neovim/nvim-lspconfig",
-  --       config = function()
-  --           require("nvim-lsp-installer").setup {
-  --               automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-  --               ui = {
-  --                   icons = {
-  --                       server_installed = "✓",
-  --                       server_pending = "➜",
-  --                       server_uninstalled = "✗"
-  --                   }
-  --               }
-  --           }
-  --           local lspconfig = require("lspconfig")
-  --           lspconfig.sumneko_lua.setup {}
-  --       end
-  --   }
-  -- }
+  use "williamboman/mason-lspconfig.nvim"
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'

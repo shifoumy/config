@@ -1,9 +1,8 @@
 *
-
 !*/
-!nvim/**
-
-awesome/**
-rofi.adrien/**
+!/nvim/**
 nvim/plugin/**
-!rofi/**
+!/rofi/**
+/rofi.adrien
+
+!.gitignore

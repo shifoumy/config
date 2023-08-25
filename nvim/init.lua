@@ -38,6 +38,16 @@ vim.o.completeopt = 'menuone,noselect'
 -- }
 -- require('onedark').load()
 
+require("nvim-tree").setup({
+    -- git = {
+    --     enable = true,
+    --     ignore = false,
+    --     show_on_dirs = true,
+    --     show_on_open_dirs = true,
+    --     timeout = 400,
+    -- },
+})
+
 require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
     background = { -- :h background
@@ -138,6 +148,7 @@ require("mason").setup({
         }
     }
 })
+require("mason-lspconfig").setup()
 
 -- LSP settings
 -- local lspconfig = require 'lspconfig'
@@ -173,7 +184,9 @@ local servers = {
     jsonls = {},
     yamlls = {},
     cmake = {}, 
-    sqls = {},
+    sqlls = {
+
+    },
     pylsp = {
         configurationSources = {"black"},
         plugins = {
@@ -194,6 +207,12 @@ local servers = {
         formatCommand = {"black"}
     }
 }
+require("lsp-format").setup{
+    -- python = {
+    --     sync = true,
+    --     order = {"black"}
+    -- }
+}
 for lsp, lspsettings in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = require("lsp-format").on_attach,
@@ -205,13 +224,6 @@ for lsp, lspsettings in pairs(servers) do
   }
 end
 
-require("lsp-format").setup{
-    -- python = {
-    --     sync = true,
-    --     order = {"black"}
-    -- }
-}
---
 ------------------------------nvim last place
 require'nvim-lastplace'.setup{}
 
