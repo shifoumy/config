@@ -34,9 +34,15 @@ vim.o.completeopt = 'menuone,noselect'
 --Set theme :
 -- require('onedark').setup {
 --     style = 'darker',
--- 
+--
 -- }
 -- require('onedark').load()
+
+--------------------------------------------------------------------> Mappings
+function map(mode, shortcut, command)
+  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+end
+require "config_telescope"
 
 require("nvim-tree").setup({
     -- git = {
@@ -47,6 +53,8 @@ require("nvim-tree").setup({
     --     timeout = 400,
     -- },
 })
+--
+
 
 require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -94,15 +102,6 @@ require("catppuccin").setup({
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
 
-
---------------------------------------------------------------------> Mappings
-function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
-end
-map('', '<C-D>', ':Telescope find_files<CR>')
-map('', '<C-F>', ':Telescope grep_string<CR>')
-map('', '<C-X>', ':NvimTreeToggle<CR>')
---------------------------------------------------------------------> Theme
 --Set statusbar
 require('lualine').setup {
   options = {
@@ -112,7 +111,6 @@ require('lualine').setup {
     section_separators = '',
   },
 }
-
 
 require('gitsigns').setup {
   signs = {
@@ -130,9 +128,6 @@ require('gitsigns').setup {
 -- vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 -- vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 -- vim.g.indent_blankline_show_trailing_blankline_indent = false
-
--- Enable telescope fzf native
-require('telescope').load_extension 'fzf'
 
 -- Treesitter configuration
 require("nvim-treesitter.configs").setup{
@@ -170,7 +165,6 @@ local on_attach = function(_, bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-
 -- nvim-cmp supports additional completion capabilities
 -- nvim-cmp setup
 require "cmp_config"
@@ -178,15 +172,15 @@ require "cmp_config"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 
-    dockerls = {}, 
+local servers = {
+    dockerls = {},
     bashls = {},
     jsonls = {},
     yamlls = {},
-    cmake = {}, 
-    sqlls = {
+    cmake = {},
+    --sqlls = {
 
-    },
+    --},
     pylsp = {
         configurationSources = {"black"},
         plugins = {
@@ -235,24 +229,24 @@ vim.g.shebang_shells = {
     py = 'python3'
 }
 
--- -- Trailing and trim whitespace
--- require('trim').setup({
---   -- if you want to ignore markdown file.
---   -- you can specify filetypes.
---   disable = {"markdown"},
---
---   -- if you want to ignore space of top
---   patterns = {
---     [[%s/\s\+$//e]],
---     [[%s/\($\n\s*\)\+\%$//]],
---     [[%s/\(\n\n\)\n\+/\1/]],
---   },
--- })
+-- Trailing and trim whitespace
+require('trim').setup({
+  -- if you want to ignore markdown file.
+  -- you can specify filetypes.
+  disable = {"markdown"},
+
+  -- if you want to ignore space of top
+  patterns = {
+    [[%s/\s\+$//e]],
+    [[%s/\($\n\s*\)\+\%$//]],
+    [[%s/\(\n\n\)\n\+/\1/]],
+  },
+})
 
 require('nvim-ts-autotag').setup()
 require('nvim-autopairs').setup()
 
--- test plugins 
+-- test plugins
 
 -- require'shade'.setup({
 --   overlay_opacity = 75,

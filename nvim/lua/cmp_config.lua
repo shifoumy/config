@@ -3,16 +3,29 @@
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 
-local win = { 
---     border = "rounded",
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
+-- End test new conf
+
+local comp = {
     max_width = 50,
     min_width = 50,
     max_height = math.floor(vim.o.lines * 0.4),
     min_height = 3,
 }
-local doc = { 
-    border = "rounded",
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+local doc = {
+    border = border "CmpDocBorder",
+    winhighlight = "Normal:CmpDoc",
     max_width = 50,
     min_width = 50,
     max_height = math.floor(vim.o.lines * 0.4),
@@ -36,7 +49,7 @@ cmp.setup({
     end,
   },
   window = {
-    -- completion = win,
+    completion = comp,
     documentation = doc,
   },
   view = {

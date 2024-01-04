@@ -81,7 +81,7 @@ require('packer').startup(function(use)
   use 'ethanholz/nvim-lastplace'
   use 'samirettali/shebang.nvim'
 -- Trim withespace and useless lines
---  use 'cappyzawa/trim.nvim'
+  use 'cappyzawa/trim.nvim'
   use 'machakann/vim-highlightedyank'
 -- lsp format to format at saving file
   use "lukas-reineke/lsp-format.nvim"
@@ -154,5 +154,13 @@ require('packer').startup(function(use)
         require('git-conflict').setup()
     end
     }
+  use {
+    'OscarCreator/rsync.nvim',
+    run = 'make',   
+    requires = {'nvim-lua/plenary.nvim'},     
+    config = function()         
+            require("rsync").setup()     
+    end 
+  }
 
 end)
