@@ -2,6 +2,7 @@
 !*/
 !/nvim/**
 nvim/plugin/**
+nvim/*.log
 !/rofi/**
 /rofi.adrien
 
