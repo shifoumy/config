@@ -55,7 +55,6 @@ require("nvim-tree").setup({
 })
 --
 
-
 require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
     background = { -- :h background
@@ -333,3 +332,5 @@ vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {nor
 require("startup").setup({theme = "evil"})
 
 require "noice_config"
+
+require "config_indent-blankline"
